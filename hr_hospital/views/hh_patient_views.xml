@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hh_patient_tree" model="ir.ui.view">
+        <field name="name">hh.patient.tree()</field>
+        <field name="model">hh.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+
+            </tree>
+        </field>
+    </record>
+
+     <record id="hh_patient_form" model="ir.ui.view">
+        <field name="name">hh.patient.form()</field>
+        <field name="model">hh.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="hh_dpatient_act_window" model="ir.action.act_window">
+         <field name="name">Patient</field>
+         <field name="type">ir.action.act_window</field>
+         <field name="res_model">hh.patient</field>
+         <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hh_patient_menu"
+              action="my_demo_act_window"
+            name="Patient" sequence="200"/>
+
+</odoo>
+

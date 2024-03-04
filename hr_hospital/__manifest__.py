@@ -1,11 +1,11 @@
 {
-    'name': 'My demo module',
-    'summary': 'My demo module from video',
+    'name': 'HR Hospital',
+    'summary': 'HR moodule lesson 2',
 
     'author': 'BoricH',
-    'website': '',
+    'website': 'https://en.wikipedia.org/wiki/Hospital',
 
-    'category': 'Castomization',
+    'category': 'Human Resourses',
     'license': 'OPL-1',
     'version': '17.0.0.0.1',
 
@@ -15,7 +15,6 @@
     'external_dependencies': {'python': [],},
 
     'data': [
-        'views/my_demo_views.xml'
 
     ],
     'demo': [
