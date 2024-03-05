@@ -23,6 +23,7 @@
 
     ],
     'demo': [
+        'demo/hh_demo.xml'
 
     ],
 

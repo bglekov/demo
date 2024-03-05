@@ -16,10 +16,16 @@
         <field name="model">my.demo</field>
         <field name="arch" type="xml">
             <form>
+                <header></header>
                 <sheet>
                     <group>
                         <field name="name"/>
-
+                        <field name="active"/>
+                        <field name="date"/>
+                        <field name="yesterday"/>
+                        <field name="qty"/>
+                        <field name="partner_id"/>
+                        <field name="image" widget="image"/>
                     </group>
                 </sheet>
             </form>
@@ -34,8 +40,12 @@
     </record>
 
     <menuitem id="my_demo_menu"
+              name="Catalog" sequence="100"/>
+
+    <menuitem id="my_demo_menu"
               action="my_demo_act_window"
-            name="My Demo" sequence="200"/>
+              parent="my_demo_menu"
+              name="My Demo" sequence="200"/>
 
 </odoo>
 

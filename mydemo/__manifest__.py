@@ -20,6 +20,7 @@
 
     ],
     'demo': [
+        'demo/my_demo.xml'
 
     ],
 

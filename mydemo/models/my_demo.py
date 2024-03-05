@@ -10,5 +10,9 @@ class MyDemo(models.Model):
     _description = 'MyDemo'
 
     name = fields.Char()
-
     active = fields.Boolean(default=True, )
+    date = fields.Date()
+    yesterday = fields.Date()
+    qty = fields.Integer()
+    partnet_id = fields.Many2one(comodel_name='res.partner')
+    image = fields.Image()
