@@ -9,4 +9,6 @@ class PatientVisit(models.Model):
     _name = 'hh.patient.visit'
     _description = 'PatientVisit'
 
-    name = fields.Char()
+    date = fields.Date()
+    doctor_id = fields.Many2one(comodel_name='hh.doctor')
+    patient_id = fields.Many2one(comodel_name='hh.patient')
