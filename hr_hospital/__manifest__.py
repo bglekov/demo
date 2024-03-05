@@ -1,9 +1,9 @@
 {
-    'name': 'My demo module',
-    'summary': 'My demo module from video',
+    'name': 'HR Hospital',
+    'summary': 'HR moodule lesson 2',
 
     'author': 'BoricH',
-    'website': '',
+    'website': 'https://en.wikipedia.org/wiki/Hospital',
 
     'category': 'Castomization',
     'license': 'OPL-1',
@@ -12,12 +12,14 @@
     'depends': [
         'base',
     ],
-    'external_dependencies': {'python': [], },
+    'external_dependencies': {'python': [],},
 
     'data': [
         'sequrity/ir.model.access.csv',
-        'views/my_demo_views.xml',
-
+        'views/hh_doctor_views.xml',
+        'views/hh_illness_views.xml',
+        'views/hh_patient_views.xml',
+        'views/hh_patient_visit_views.xml',
     ],
     'demo': [
 
