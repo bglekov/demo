@@ -5,17 +5,21 @@
     'author': 'BoricH',
     'website': 'https://en.wikipedia.org/wiki/Hospital',
 
-    'category': 'Human Resourses',
+    'category': 'Castomization',
     'license': 'OPL-1',
     'version': '17.0.0.0.1',
 
-    'depends':[
+    'depends': [
         'base',
     ],
     'external_dependencies': {'python': [],},
 
     'data': [
-
+        'sequrity/ir.model.access.csv',
+        'views/hh_doctor_views.xml',
+        'views/hh_illness_views.xml',
+        'views/hh_patient_views.xml',
+        'views/hh_patient_visit_views.xml',
     ],
     'demo': [
 

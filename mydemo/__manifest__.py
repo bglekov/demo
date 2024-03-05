@@ -9,13 +9,14 @@
     'license': 'OPL-1',
     'version': '17.0.0.0.1',
 
-    'depends':[
+    'depends': [
         'base',
     ],
-    'external_dependencies': {'python': [],},
+    'external_dependencies': {'python': [], },
 
     'data': [
-        'views/my_demo_views.xml'
+        'sequrity/ir.model.access.csv',
+        'views/my_demo_views.xml',
 
     ],
     'demo': [

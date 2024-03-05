@@ -26,15 +26,15 @@
         </field>
     </record>
 
-     <record id="hh_doctor_act_window" model="ir.action.act_window">
+     <record id="hh_doctor_act_window" model="ir.actions.act_window">
          <field name="name">Doctor</field>
-         <field name="type">ir.action.act_window</field>
+         <field name="type">ir.actions.act_window</field>
          <field name="res_model">hh.doctor</field>
          <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="hh_doctor_menu"
-              action="my_demo_act_window"
+              action="hh_doctor_act_window"
             name="Doctor" sequence="200"/>
 
 </odoo>

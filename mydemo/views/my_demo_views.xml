@@ -26,9 +26,9 @@
         </field>
     </record>
 
-     <record id="my_demo_act_window" model="ir.action.act_window">
+     <record id="my_demo_act_window" model="ir.actions.act_window">
          <field name="name">My demo</field>
-         <field name="type">ir.action.act_window</field>
+         <field name="type">ir.actions.act_window</field>
          <field name="res_model">my.demo</field>
          <field name="view_mode">tree,form</field>
     </record>
