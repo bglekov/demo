@@ -26,6 +26,7 @@
                         <field name="qty"/>
                         <field name="partner_id"/>
                         <field name="image" widget="image"/>
+
                     </group>
                 </sheet>
             </form>
@@ -46,6 +47,7 @@
               action="my_demo_act_window"
               parent="my_demo_menu"
               name="My Demo" sequence="200"/>
+
 
 </odoo>
 

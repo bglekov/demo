@@ -33,6 +33,7 @@
          <field name="view_mode">tree,form</field>
     </record>
 
+
     <menuitem id="hh_catalog_menu"
               name="Catalog" sequence="100"/>
 
@@ -42,4 +43,3 @@
               name="Doctor" sequence="200"/>
 
 </odoo>
-

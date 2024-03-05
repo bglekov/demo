@@ -5,6 +5,7 @@
     'author': 'BoricH',
     'website': '',
 
+
     'category': 'Castomization',
     'license': 'OPL-1',
     'version': '17.0.0.0.1',
@@ -12,6 +13,7 @@
     'depends': [
         'base',
     ],
+
     'external_dependencies': {'python': [], },
 
     'data': [
@@ -24,6 +26,7 @@
     ],
     'demo': [
         'demo/hh_demo.xml'
+
 
     ],
 
