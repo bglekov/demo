@@ -35,7 +35,8 @@
 
     <menuitem id="hh_patient_menu"
               action="hh_patient_act_window"
-            name="Patient" sequence="200"/>
+              parent="hh_catalog_menu"
+              name="Patient" sequence="200"/>
 
 </odoo>
 
