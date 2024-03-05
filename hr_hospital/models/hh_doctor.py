@@ -10,4 +10,3 @@ class Doctor(models.Model):
     _description = 'Doctor'
 
     name = fields.Char()
-

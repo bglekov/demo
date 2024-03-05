@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="my_demo_1" model="my.demo">
+        <field name="name">Demo data 1</field>
+        <field name="active" eval="True"/>
+        <field name="date" eval="DateTime.today().strftime('%Y-%m-%d')"/>
+        <field name="yesterday" eval="(DateTime.today() - relativedelta(day=1)).strftime('%Y-%m-%d')"/>
+        <field name="qty" eval="102"/>
+        <field name="partner_id" ref="base.res_partner_10"/>
+        <field name="image" type="base64" file="base/static/img/res_partner_10-image.jpg"/>
+    </record>
+ </odoo>

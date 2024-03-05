@@ -3,7 +3,8 @@
     'summary': 'HR moodule lesson 2',
 
     'author': 'BoricH',
-    'website': 'https://en.wikipedia.org/wiki/Hospital',
+    'website': '',
+
 
     'category': 'Castomization',
     'license': 'OPL-1',
@@ -12,7 +13,8 @@
     'depends': [
         'base',
     ],
-    'external_dependencies': {'python': [],},
+
+    'external_dependencies': {'python': [], },
 
     'data': [
         'sequrity/ir.model.access.csv',
@@ -20,8 +22,11 @@
         'views/hh_illness_views.xml',
         'views/hh_patient_views.xml',
         'views/hh_patient_visit_views.xml',
+
     ],
     'demo': [
+        'demo/hh_demo.xml'
+
 
     ],
 

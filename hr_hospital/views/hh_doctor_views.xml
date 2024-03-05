@@ -33,9 +33,13 @@
          <field name="view_mode">tree,form</field>
     </record>
 
+
+    <menuitem id="hh_catalog_menu"
+              name="Catalog" sequence="100"/>
+
     <menuitem id="hh_doctor_menu"
               action="hh_doctor_act_window"
-            name="Doctor" sequence="200"/>
+              parent="hh_catalog_menu"
+              name="Doctor" sequence="200"/>
 
 </odoo>
-
