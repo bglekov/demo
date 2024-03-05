@@ -1,0 +1,4 @@
+hr_hospital.access_hh_doctor,access_hh_doctor,hr_hospital.model_hh_doctor,base.group_user,1,1,1,1
+hr_hospital.access_hh_illness,access_hh_illness,hr_hospital.model_hh_illness,base.group_user,1,1,1,1
+hr_hospital.access_hh_patient,access_hh_patient,hr_hospital.model_hh_patient,base.group_user,1,1,1,1
+hr_hospital.access_hh_patient_visit,access_hh_patient_visit,hr_hospital.model_hh_patient_visit,base.group_user,1,1,1,1
