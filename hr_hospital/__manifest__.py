@@ -18,14 +18,19 @@
 
     'data': [
         'sequrity/ir.model.access.csv',
+        'data/hh_master.xml',
+        'views/hh__main__menu.xml',
         'views/hh_doctor_views.xml',
         'views/hh_illness_views.xml',
         'views/hh_patient_views.xml',
         'views/hh_patient_visit_views.xml',
+        'views/hh_diagnosis.xml',
+        'views/hh_contact_persons.xml',
 
     ],
     'demo': [
-        'demo/hh_demo.xml'
+        'data/hh_demo.xml'
+
 
 
     ],

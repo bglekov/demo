@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+
+    <record id="hh_doctor_1" model="hh.doctor" forcecreate="True">
+        <field name="name">Doctor Khaus</field>
+    </record>
+    <record id="hh_doctor_2" model="hh.doctor" forcecreate="True">
+        <field name="name">Doctor Zlo</field>
+    </record>
+    <record id="hh_doctor_3" model="hh.doctor" forcecreate="True">
+        <field name="name">Doctor Frnkenshtein</field>
+    </record>
+
+
+    <record id="hh_patient_1" model="hh.patient" forcecreate="True">
+        <field name="name">Tamara Ivanivna</field>
+    </record>
+    <record id="hh_patient_2" model="hh.patient" forcecreate="True">
+        <field name="name">Yan Panasov</field>
+    </record>
+    <record id="hh_patient_3" model="hh.patient" forcecreate="True">
+        <field name="name">Hylio Iglesias</field>
+    </record>
+
+
+    <record id="hh_Illness_Bacterial_Parent" model="hh.illness"  forcecreate="True">
+        <field name="name">Bacterial</field>
+    </record>
+    <record id="hh_Illness_Virus_Parent" model="hh.illness"  forcecreate="True">
+        <field name="name">Virus</field>
+    </record>
+    <record id="hh_Illness_Other_Parent" model="hh.illness"  forcecreate="True">
+        <field name="name">Other</field>
+    </record>
+
+    <record id="hh_illness_1" model="hh.illness"  forcecreate="True">
+        <field name="name">Angina</field>
+        <field name="parent_id" ref="hh_Illness_Bacterial_Parent"/>
+    </record>
+    <record id="hh_illness_2" model="hh.illness" forcecreate="True">
+        <field name="name">Gepatit</field>
+        <field name="parent_id" ref="hh_Illness_Virus_Parent"/>
+    </record>
+    <record id="hh_illness_3" model="hh.illness" forcecreate="True">
+        <field name="name">Vrus Z</field>
+         <field name="parent_id" ref="hh_Illness_Virus_Parent"/>
+    </record>
+    <record id="hh_illness_4" model="hh.illness" forcecreate="True">
+        <field name="name">Scarlatyna</field>
+         <field name="parent_id" ref="hh_Illness_Other_Parent"/>
+    </record>
+
+
+</odoo>
+
