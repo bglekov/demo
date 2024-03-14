@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard form -->
+    <record id="diagnos_month_list_wizard_view_form" model="ir.ui.view">
+        <field name="name">hh.diagnos.month.list.wizard.form</field>
+        <field name="model">hh.diagnos.month.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                <group>
+                    <field name="doctor_ids" options="{'no_create': True}" widget='many2many_tags'/>
+                    <field name="illness_ids" options="{'no_create': True}" widget='many2many_tags'/>
+                </group>
+                                <field name="diagnos_ids" options="{'no_create': True}"/>
+                <footer>
+                    <button name="action_show_diagnoses" string="Generate" type="object" class="btn-primary"/>
+                    <button special="cancel" class="oe_link" string="Close"/>
+<!--                     <button string="Cancel" class="btn-secondary" special="cancel"/>-->
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- действие для открытия визарда Actions -->
+    <record id="action_diagnos_month_list_wizard" model="ir.actions.act_window">
+        <field name="name">Diagnoses List</field>
+        <field name="res_model">hh.diagnos.month.list</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr_hospital.model_hh_doctor"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="binding_type">action</field>
+    </record>
+     <!-- действие для открытия визарда report -->
+    <record id="report_diagnos_month_list_wizard" model="ir.actions.act_window">
+        <field name="name">Diagnoses List</field>
+        <field name="res_model">hh.diagnos.month.list</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr_hospital.model_hh_doctor"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- CASE 2: Call the wizard via a server action, that is linked to the Configuration submenu -->
+    <record id="server_action_diagnos_month_list_wizard" model="ir.actions.server">
+        <field name="name">Diagnoses List (Server)</field>
+        <field name="model_id" ref="hr_hospital.model_hh_diagnos_month_list"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_open_wizard()
+        </field>
+    </record>
+    <record id="menu_diagnos_month_list_wizard" model="ir.ui.menu">
+        <field name="name">Diagnoses List (Menue)</field>
+        <field name="parent_id" ref="hr_hospital.hh_diagnos_menu"/>
+        <field name="action" ref="server_action_diagnos_month_list_wizard"/>
+        <field name="sequence" eval="1"/>
+    </record>
+</odoo>

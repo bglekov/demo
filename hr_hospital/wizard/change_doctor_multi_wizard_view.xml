@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Wizard form -->
+    <record id="change_doctor_multi_wizard_view_form" model="ir.ui.view">
+        <field name="name">hh.patient.change.doctor.multi.wizard.form</field>
+        <field name="model">hh.patient.change.doctor.multi.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="new_doctor_id" options="{'no_create': True}"/>
+                    <!-- Example of creating radio button-->
+                    <!-- <field name="company_type" widget="radio" options="{'horizontal': true}"/>-->
+                </group>
+                <footer>
+                    <button name="action_write_doctor"
+                            string="Write new doctor"
+                            type="object"
+                            icon="fa-plus"
+                            class="btn-primary"
+                    />
+                    <button special="cancel" class="oe_link" string="Close"/>
+<!--                     <button string="Cancel" class="btn-secondary" special="cancel"/>-->
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- действие для открытия визарда Actions -->
+    <record id="action_change_doctor_multi_wizard" model="ir.actions.act_window">
+        <field name="name">Change Doctor</field>
+        <field name="res_model">hh.patient.change.doctor.multi.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr_hospital.model_hh_patient"/>
+        <field name="binding_view_types">list</field>
+        <field name="binding_type">action</field>
+    </record>
+
+
+
+</odoo>

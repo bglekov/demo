@@ -1,0 +1,11 @@
+<odoo noupdate="1">
+    <record id="hh_illness_1" model="hh.illness">
+        <field name="name">Angina</field>
+    </record>
+    <record id="hh_illness_2" model="hh.illness">
+        <field name="name">Gepatit</field>
+    </record>
+    <record id="hh_illness_3" model="hh.illness">
+        <field name="name">Vrus Z</field>
+    </record>
+</odoo>

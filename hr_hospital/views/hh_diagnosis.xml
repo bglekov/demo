@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hh_diagnos_tree" model="ir.ui.view">
+        <field name="name">hh.diagnos.tree()</field>
+        <field name="model">hh.diagnos</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="visit_id"/>
+                <field name="illness_id"/>
+                <field name="appointment"/>
+                <field name="approved"/>
+                <field name="doctor_id"/>
+                <field name="patient_id"/>
+            </tree>
+        </field>
+    </record>
+
+<!--  FORM  -->
+    <record id="hh_diagnos_form" model="ir.ui.view">
+        <field name="name">hh.diagnos.form()</field>
+        <field name="model">hh.diagnos</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="visit_id"/>
+                        <field name="illness_id"/>
+                        <field name="appointment"/>
+                        <field name="approved"/>
+                        <field name="doctor_id"/>
+                        <field name="patient_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hh_diagnos_act_window" model="ir.actions.act_window">
+         <field name="name">Diagnos</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">hh.diagnos</field>
+         <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hh_diagnos_menu"
+              action="hh_diagnos_act_window"
+              parent="hh_visit_group_menu"
+              name="Diagnos" sequence="200"/>
+
+</odoo>

@@ -3,3 +3,8 @@ hr_hospital.access_hh_doctor,access_hh_doctor,hr_hospital.model_hh_doctor,base.g
 hr_hospital.access_hh_illness,access_hh_illness,hr_hospital.model_hh_illness,base.group_user,1,1,1,1
 hr_hospital.access_hh_patient,access_hh_patient,hr_hospital.model_hh_patient,base.group_user,1,1,1,1
 hr_hospital.access_hh_patient_visit,access_hh_patient_visit,hr_hospital.model_hh_patient_visit,base.group_user,1,1,1,1
+hr_hospital.access_hh_diagnos,access_hh_diagnos,hr_hospital.model_hh_diagnos,base.group_user,1,1,1,1
+hr_hospital.access_hh_contact_person,access_hh_contact_person,hr_hospital.model_hh_contact_person,base.group_user,1,1,1,1
+hr_hospital.access_hh_speciality,access_hh_speciality,hr_hospital.model_hh_speciality,base.group_user,1,1,1,1
+hr_hospital.access_hh_patient_change_doctor_multi_wizard,access_hh_patient_change_doctor_multi_wizard,hr_hospital.model_hh_patient_change_doctor_multi_wizard,base.group_user,1,1,1,1
+hr_hospital.access_hh_diagnos_month_list,access_hh_diagnos_month_list,hr_hospital.model_hh_diagnos_month_list,base.group_user,1,1,1,1

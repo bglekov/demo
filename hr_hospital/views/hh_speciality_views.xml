@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hh_speciality_tree" model="ir.ui.view">
+        <field name="name">hh.speciality.tree()</field>
+        <field name="model">hh.speciality</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="hh_speciality_form" model="ir.ui.view">
+        <field name="name">hh.speciality.form()</field>
+        <field name="model">hh.speciality</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="speciality"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="hh_speciality_act_window" model="ir.actions.act_window">
+         <field name="name">Speciality</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">hh.speciality</field>
+         <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hh_speciality_menu"
+              action="hh_speciality_act_window"
+              parent="hh_doctor_group_menu"
+              name="Speciality" sequence="200"/>
+
+</odoo>
