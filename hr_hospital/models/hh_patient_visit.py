@@ -98,3 +98,4 @@ class PatientVisit(models.Model):
             # DON`T FORGET: from odoo.exceptions import UserError
             raise UserError(
                 "You can`t delete the visit. It has related diagnoses items.")
+
