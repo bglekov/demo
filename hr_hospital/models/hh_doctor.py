@@ -22,4 +22,4 @@ class Doctor(models.Model):
     @api.onchange('is_intern', 'doctor_mentor')
     def _onchange_is_intern(self):
         if not self.is_intern:
-           self.doctor_mentor = None
+            self.doctor_mentor = False
