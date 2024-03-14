@@ -8,15 +8,20 @@ class DiagnosesMonthListWizard(models.TransientModel):
     _description = 'Diagnoses per month'
 
     doctor_ids = fields.Many2many(comodel_name='hh.doctor')
-    illness_ids = fields.Many2many(comodel_name='hh.illness', string='Illnesses')
+    illness_ids = fields.Many2many(
+        comodel_name='hh.illness',
+        string='Illnesses'
+    )
     start_date = fields.Date(default=date.today().replace(day=1))
     end_date = fields.Date(default=date.today() + relativedelta(day=31))
 
-    diagnos_ids = fields.Many2many(comodel_name='hh.diagnos',string='Diagnoses')
-
+    diagnos_ids = fields.Many2many(
+        comodel_name='hh.diagnos',
+        string='Diagnoses'
+    )
 
     def action_show_diagnoses(self):
-        #generate domain for filter
+        # generate domain for filter
 
         domain = []
 
@@ -25,9 +30,12 @@ class DiagnosesMonthListWizard(models.TransientModel):
         if self.illness_ids:
             domain += [('illness_id', 'in', self.illness_ids.ids)]
         if self.start_date and self.end_date:
-            domain += [('create_date', ">=", self.start_date), (('create_date', "<=", self.end_date))]
+            domain += [
+                ('create_date', ">=", self.start_date),
+                ('create_date', "<=", self.end_date)
+            ]
 
-        diagnos_ids = self.env['hh.diagnos'].search(domain)
+        self.diagnos_ids.search(domain)
 
         return {
             'name': 'Diagnos list Wizard',
