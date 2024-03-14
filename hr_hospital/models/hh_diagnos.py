@@ -22,4 +22,3 @@ class Diagnos(models.Model):
         related='visit_id.patient_id',
         readonly=True
     )
-

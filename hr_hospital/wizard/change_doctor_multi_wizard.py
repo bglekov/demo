@@ -10,7 +10,6 @@ class PatientChangeDoctorMulti(models.TransientModel):
 
     new_doctor_id = fields.Many2one(comodel_name='hh.doctor',string='New Doctor')
 
-
     def action_write_doctor(self):
         active_ids = self.env.context.get('active_ids')
         patient_ids = self.env['hh.patient'].browse(active_ids)
