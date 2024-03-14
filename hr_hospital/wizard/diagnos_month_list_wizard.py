@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import _, fields, models
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
@@ -30,9 +30,9 @@ class DiagnosesMonthListWizard(models.TransientModel):
         diagnos_ids = self.env['hh.diagnos'].search(domain)
 
         return {
-            'name': 'Invoice Report Wizard',  # The name of the action, should be the same as the wizard
+            'name': 'Diagnos list Wizard',
             'type': 'ir.actions.act_window',
-            'res_model': 'invoice.report.wizard',
+            'res_model': 'hh.diagnos.month.list',
             'view_mode': 'form',
             'target': 'new',
             'context': self.env.context,

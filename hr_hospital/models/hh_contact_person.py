@@ -6,11 +6,10 @@ class Contact_Person(models.Model):
     _description = 'Contact persons'
     _inherit = 'hh.person.mixin'
 
-    name = fields.Char(compute='_compute_name',store=True)
+    name = fields.Char(compute='_compute_name', store=True)
 
     # def write(self, vals):
     #     self.name = "%s %s" % (self.first_name, self.last_name or '')
-
 
     @api.depends('first_name', 'last_name')
     def _compute_name(self):

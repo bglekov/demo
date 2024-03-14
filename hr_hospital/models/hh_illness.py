@@ -14,10 +14,10 @@ class Illness(models.Model):
 
     parent_id = fields.Many2one(
         comodel_name='hh.illness',
-        _parent_name='Parent',
+        string='Parent',
         index=True,
         ondelete='cascade',
-        domain="[('id', '!=', id),]"
+        domain = "[('id', '!=', id),]",
     )
     parent_path = fields.Char(index=True)
     child_id = fields.One2many(
