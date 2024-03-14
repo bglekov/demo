@@ -11,6 +11,7 @@ class Contact_Person(models.Model):
     # def write(self, vals):
     #     self.name = "%s %s" % (self.first_name, self.last_name or '')
 
+
     @api.depends('first_name', 'last_name')
     def _compute_name(self):
         for rec in self:

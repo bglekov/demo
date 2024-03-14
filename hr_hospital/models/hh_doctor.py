@@ -18,6 +18,7 @@ class Doctor(models.Model):
         domain="[('is_intern', '=', False),('id', '!=', id),]"
     )
 
+
     @api.onchange('is_intern','doctor_mentor')
     def _onchange_is_intern(self):
         #for rec in self:

@@ -26,9 +26,8 @@ class Illness(models.Model):
         string='Child illnessses'
     )
 
+
     @api.constrains('parent_id')
     def check_recursion_parent_id(self):
         if not self._check_recursion():
             raise ValueError(_('Error! You cannot create recursive categories.'))
-
-
