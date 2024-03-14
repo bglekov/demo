@@ -12,6 +12,7 @@
                 <field name="doctor_id"/>
                 <field name="patient_id"/>
                 <field name="visit_status"/>
+                <field name="diagnos_qty"/>
             </tree>
         </field>
     </record>

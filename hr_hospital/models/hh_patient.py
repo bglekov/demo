@@ -1,8 +1,10 @@
+import logging
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
 
+_logger = logging.getLogger(__name__)
 
 class Patient(models.Model):
     _name = 'hh.patient'

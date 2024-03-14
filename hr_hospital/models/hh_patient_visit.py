@@ -1,8 +1,5 @@
 import logging
-from threading import activeCount
-
 from odoo.exceptions import UserError
-
 from odoo import api, models, fields
 
 _logger = logging.getLogger(__name__)
@@ -11,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class PatientVisit(models.Model):
     _name = 'hh.patient.visit'
     _description = 'PatientVisit'
-    active = fields.Boolean(default=True,compute='_compute_active')
+    active = fields.Boolean(default=True, store=True)
 
     #name = fields.Char()
     planned_date_time = fields.Datetime(
@@ -19,6 +16,7 @@ class PatientVisit(models.Model):
         readonly=False,
         # completed, cancelled - readonly=True
     )
+    planned_date = fields.Date(index=True)
 
     fact_date_time = fields.Datetime(
         string='Date-time fact',
@@ -31,6 +29,7 @@ class PatientVisit(models.Model):
         readonly=False,
         # completed, cancelled - readonly=True
         required=True,
+        index=True,
     )
 
     visit_status = fields.Selection(
@@ -46,7 +45,7 @@ class PatientVisit(models.Model):
     )
 
     diagnos_ids = fields.One2many(comodel_name='hh.diagnos',inverse_name='visit_id',string='Diagnoses')
-    patient_id = fields.Many2one(comodel_name='hh.patient')
+    patient_id = fields.Many2one(comodel_name='hh.patient', index=True)
     diagnos_qty = fields.Integer(compute='_compute_diagnos_qty',store=False)
 
 
@@ -56,31 +55,46 @@ class PatientVisit(models.Model):
         for rec in self:
             rec.display_name = "%s -> %s : %s" % (rec.patient_id.name, rec.doctor_id.name, rec.planned_date_time or '')
 
-    @api.ondelete(at_uninstall=False)
-    def _check_pissibility_for_deletion(self):
-        diagnos_qty = self.env['hh.diagnos'].search_count([
-            ('visit_id', '=', self._ids),
-        ], limit=1)
-        if diagnos_qty:
-            # DON`T FORGET: from odoo.exceptions import UserError
-            raise UserError(
-                "Yuo can`t delete the visit. It has related diagnoses items.")
 
     @api.depends('diagnos_ids')
     def _compute_diagnos_qty(self):
         for rec in self:
-            #if rec.diagnos_ids:
-                rec.diagnos_qty = self.env['hh.diagnos'].search_count([
-                    ('visit_id', '=', self._ids),
-                ])
-            #else:
-            #    rec.diagnos_qty = 0
+            rec.diagnos_qty = len(rec.diagnos_ids)
 
-    @api.depends('diagnos_qty')
-    def _compute_active(self):
+
+    @api.depends('planned_date_time')
+    def _onchange_planned_date_time(self):
         for rec in self:
-            if rec.diagnos_qty != '0':
-                rec.active = True
-            else:
-                rec.active = False
+            if rec.planned_date_time:
+                rec.planned_date = rec.planned_date_time.date()
 
+
+    @api.constrains('active')
+    def _check_active_value(self):
+        for rec in self:
+            if not rec.active and rec.diagnos_qty > 0:
+                raise UserError("Patient visit has some diagnoses. You cannot archive it.")
+
+
+    @api.constrains('planned_date_time','doctor_id','patient_id')
+    def _check_uniq_doctor_patient_date(self):
+        for rec in self:
+            if self.search_count(
+                [
+                    ('patient_id', '=', rec.patient_id.id),
+                    ('doctor_id', '=', rec.doctor_id.id),
+                    ('planned_date', '=', rec.planned_date)
+                ]
+            ) > 1:
+                raise UserError("You cannot create visit for same doctor and patient on same day")
+
+
+    @api.ondelete(at_uninstall=False)
+    def _check_pissibility_for_deletion(self):
+        # diagnos_qty = self.env['hh.diagnos'].search_count([
+        #     ('visit_id', '=', self._ids),
+        # ], limit=1)
+        if self.diagnos_qty:
+            # DON`T FORGET: from odoo.exceptions import UserError
+            raise UserError(
+                "You can`t delete the visit. It has related diagnoses items.")

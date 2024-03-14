@@ -26,6 +26,8 @@
         'views/hh_patient_visit_views.xml',
         'views/hh_diagnosis.xml',
         'views/hh_contact_persons.xml',
+        'wizard/change_doctor_multi_wizard_view.xml',
+        'wizard/diagnos_month_list_wizard_view.xml',
 
     ],
     'demo': [
