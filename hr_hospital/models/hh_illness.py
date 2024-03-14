@@ -1,6 +1,6 @@
 import logging
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ class Illness(models.Model):
         string='Parent',
         index=True,
         ondelete='cascade',
-        domain = "[('id', '!=', id),]",
+        domain="[('id', '!=', id),]",
     )
     parent_path = fields.Char(index=True)
     child_id = fields.One2many(
@@ -26,8 +26,7 @@ class Illness(models.Model):
         string='Child illnessses'
     )
 
-
     @api.constrains('parent_id')
     def check_recursion_parent_id(self):
         if not self._check_recursion():
-            raise ValueError(_('Error! You cannot create recursive categories.'))
+            raise ValueError(_('You cannot create recursive categories.'))
