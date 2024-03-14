@@ -17,7 +17,9 @@ class DiagnosesMonthListWizard(models.TransientModel):
 
     def action_show_diagnoses(self):
         #generate domain for filter
-        domain=[]
+
+        domain = []
+
         if self.doctor_ids:
             domain += [('doctor_id', 'in', self.doctor_ids.ids)]
         if self.illness_ids:

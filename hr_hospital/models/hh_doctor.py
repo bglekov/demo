@@ -24,4 +24,3 @@ class Doctor(models.Model):
         #for rec in self:
             if not self.is_intern:
                 self.doctor_mentor = None
-

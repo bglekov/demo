@@ -57,7 +57,7 @@
     </record>
     <record id="menu_diagnos_month_list_wizard" model="ir.ui.menu">
         <field name="name">Diagnoses List (Menue)</field>
-        <field name="parent_id" ref="hr_hospital.hh_diagnos_menu"/>
+        <field name="parent_id" ref="hr_hospital.hh_visit_group_menu"/>
         <field name="action" ref="server_action_diagnos_month_list_wizard"/>
         <field name="sequence" eval="1"/>
     </record>

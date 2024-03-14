@@ -12,13 +12,22 @@ class Illness(models.Model):
 
     name = fields.Char()
 
-    parent_id = fields.Many2one('hh.illness','Parent', index=True, ondelete='cascade')
+    parent_id = fields.Many2one(
+        comodel_name='hh.illness',
+        _parent_name='Parent',
+        index=True,
+        ondelete='cascade',
+        domain="[('id', '!=', id),]"
+    )
     parent_path = fields.Char(index=True)
-    child_id = fields.One2many('hh.illness', 'parent_id', string='Child illnessses')
+    child_id = fields.One2many(
+        comodel_name='hh.illness',
+        inverse_name='parent_id',
+        string='Child illnessses'
+    )
+
 
     @api.constrains('parent_id')
     def check_recursion_parent_id(self):
         if not self._check_recursion():
             raise ValueError(_('Error! You cannot create recursive categories.'))
-
-
