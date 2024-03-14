@@ -35,7 +35,7 @@ class DiagnosesMonthListWizard(models.TransientModel):
                 ('create_date', "<=", self.end_date)
             ]
 
-        self.diagnos_ids.search(domain)
+        self.diagnos_ids = self.env['hh.diagnos'].search(domain)
 
         return {
             'name': 'Diagnos list Wizard',
