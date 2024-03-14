@@ -1,4 +1,4 @@
-from odoo import api, models, fields
+from odoo import models, fields
 
 
 class PersonMixin(models.AbstractModel):
@@ -16,5 +16,3 @@ class PersonMixin(models.AbstractModel):
             ('female', 'Female'),
         ]
     )
-
-
