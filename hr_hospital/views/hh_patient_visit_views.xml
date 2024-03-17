@@ -11,7 +11,10 @@
                 <field name="fact_date_time"/>
                 <field name="doctor_id"/>
                 <field name="patient_id"/>
-                <field name="visit_status"/>
+                <field name="visit_status" decoration-bf="True"
+                       decoration-success="visit_status=='completed'"
+                       decoration-danger="visit_status=='cancelled'"
+                       decoration-info="visit_status=='planned'"/>
                 <field name="diagnos_qty"/>
             </tree>
         </field>
@@ -23,12 +26,14 @@
         <field name="model">hh.patient.visit</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="visit_status" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="planned_date_time" readonly="visit_status=='completed' or visit_status=='cancelled'"/>
                             <field name="fact_date_time" readonly="visit_status=='completed' or visit_status=='cancelled'"/>
-                            <field name="visit_status"/>
                         </group>
                         <group>
                             <field name="doctor_id" readonly="visit_status=='completed' or visit_status=='cancelled'"/>
@@ -37,7 +42,7 @@
                         </group>
                         <field name="diagnos_ids"/>
                     </group>
-                </sheet>
+                 </sheet>
             </form>
         </field>
     </record>
