@@ -4,8 +4,15 @@
         <field name="name">hh.doctor.tree()</field>
         <field name="model">hh.doctor</field>
         <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
+            <tree expand="1">
+<!--            Атрибут expand визначає чи будуть групи розгорнуті при групуванні. За замовчанням згорнуті. -->
+                <field name="name" decoration-bf="is_intern==True" decoration-danger="is_intern==True"/>
+<!--                    decoration-bf="is_intern==True"         BOLD-->
+<!--                    decoration-muted="is_intern==True"      GREY-->
+<!--                    decoration-info="is_intern==True"       BLUE-->
+<!--                    decoration-danger="is_intern==True"     RED-->
+<!--                    decoration-warning="is_intern==True"    YELLOW-->
+<!--                    decoration-success="is_intern==True"    GREEN-->
                 <field name="speciality"/>
                 <field name="is_intern"/>
                 <field name="doctor_mentor" readonly="is_intern=='True'"/>
