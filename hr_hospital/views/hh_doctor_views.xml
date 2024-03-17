@@ -10,7 +10,7 @@
 <!--                    decoration-bf="is_intern==True"         BOLD-->
 <!--                    decoration-muted="is_intern==True"      GREY-->
 <!--                    decoration-info="is_intern==True"       BLUE-->
-<!--                    decoration-c="is_intern==True"     RED-->
+<!--                    decoration-danger="is_intern==True"     RED-->
 <!--                    decoration-warning="is_intern==True"    YELLOW-->
 <!--                    decoration-success="is_intern==True"    GREEN-->
                 <field name="speciality"/>
