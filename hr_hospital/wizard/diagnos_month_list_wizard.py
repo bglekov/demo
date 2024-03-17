@@ -12,13 +12,10 @@ class DiagnosesMonthListWizard(models.TransientModel):
         comodel_name='hh.illness',
         string='Illnesses'
     )
-    start_date = fields.Date(default=date.today().replace(day=1))
-    end_date = fields.Date(default=date.today() + relativedelta(day=31))
-
-    diagnos_ids = fields.Many2many(
-        comodel_name='hh.diagnos',
-        string='Diagnoses'
-    )
+    start_date = fields.Date(
+        default=lambda self: date.today().replace(day=1))
+    end_date = fields.Date(
+        default=lambda self: date.today() + relativedelta(day=31))
 
     def action_show_diagnoses(self):
         # generate domain for filter
@@ -35,15 +32,16 @@ class DiagnosesMonthListWizard(models.TransientModel):
                 ('create_date', "<=", self.end_date)
             ]
 
-        self.diagnos_ids.search(domain)
+        found_diagnos = self.env['hh.diagnos'].search(domain)
 
         return {
-            'name': 'Diagnos list Wizard',
+            'name': 'Diagnoses',
             'type': 'ir.actions.act_window',
-            'res_model': 'hh.diagnos.month.list',
-            'view_mode': 'form',
-            'target': 'new',
+            'res_model': 'hh.diagnos',
+            'view_mode': 'tree,form', # tree,form to let open form
+            # 'target': 'current',
             'context': self.env.context,
+            'domain': [('id', 'in', found_diagnos.ids)]
         }
 
     def action_open_wizard(self):
