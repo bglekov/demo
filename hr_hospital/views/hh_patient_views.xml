@@ -4,14 +4,16 @@
         <field name="name">hh.patient.tree()</field>
         <field name="model">hh.patient</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree create="true">
                 <field name="name"/>
-                <field name="birthday"/>
-                <field name="personal_doctor"/>
-                <field name="age"/>
+                <field name="birthday" optional="show"/>
+                <field name="personal_doctor" optional="show"/>
+                <field name="passport_series" optional="hide"/>
+                <field name="passport_number" optional="hide"/>
+                <field name="age" avg="AVG"/>
                 <field name="first_name"/>
                 <field name="last_name"/>
-                <field name="contact_person"/>
+                <field name="contact_person" optional="show"/>
             </tree>
         </field>
     </record>
