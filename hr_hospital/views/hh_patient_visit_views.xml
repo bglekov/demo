@@ -47,11 +47,55 @@
         </field>
     </record>
 
-     <record id="hh_patient_visit_act_window" model="ir.actions.act_window">
+    <!--Calendar-->
+    <record id="hh_patient_visit_calendar" model="ir.ui.view">
+        <field name="name">hh.patient.visit.calendar</field>
+        <field name="model">hh.patient.visit</field>
+        <field name="arch" type="xml">
+            <calendar string="Visits calendar" date_start="planned_date_time" date_stop="fact_date_time"
+                      mode="week">
+                <field name="doctor_id"/>
+                <field name="patient_id"/>
+                <field name="diagnos_qty"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!--Pivot-->
+    <record id="hh_patient_visit_pivot" model="ir.ui.view">
+        <field name="name">hh.patient.visit.pivot</field>
+        <field name="model">hh.patient.visit</field>
+        <field name="arch" type="xml">
+            <pivot display_quantity="0">
+                <field name="planned_date_time" interval="day" type="row"/>
+                <field name="doctor_id" type="row"/>
+<!--                <field name="patient_id"/>-->
+                <field name="visit_status" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!--Search-->
+    <record id="hh_patient_visit_search" model="ir.ui.view">
+        <field name="name">hh.patient.visit.search</field>
+        <field name="model">hh.patient.visit</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="doctor_id"/>
+                <field name="patient_id"/>
+                <field name="diagnos_qty"/>
+                <filter name="groupby_visit_status" string="Status" context="{'group_by': 'visit_status'}"/>
+                <filter name="groupby_doctor_id" string="Doctor" context="{'group_by': 'doctor_id'}"/>
+                <filter name="groupby_patient_id" string="Patient" context="{'group_by': 'patient_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="hh_patient_visit_act_window" model="ir.actions.act_window">
          <field name="name">Patient Visit</field>
          <field name="type">ir.actions.act_window</field>
          <field name="res_model">hh.patient.visit</field>
-         <field name="view_mode">tree,form</field>
+         <field name="view_mode">tree,form,calendar,pivot</field>
     </record>
 
     <menuitem id="hh_patient_visit_patient_group_menu"
