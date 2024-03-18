@@ -29,6 +29,10 @@
                     </div>
                     <group>
                         <group>
+                            <field name="photo" widget="image"
+                              width="50" height="50" resize="true"/>
+                        </group>
+                        <group>
                             <field name="name"/>
                             <field name="personal_doctor"/>
                             <field name="birthday"/>
@@ -43,9 +47,6 @@
                             <field name="phone"/>
                             <field name="email"/>
                             <field name="sex"/>
-                        </group>
-                        <group>
-                            <field name="photo" widget="image"/>
                         </group>
                     </group>
                 </sheet>
