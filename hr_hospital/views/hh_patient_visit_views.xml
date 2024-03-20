@@ -37,10 +37,12 @@
                         </group>
                         <group>
                             <field name="doctor_id" readonly="visit_status=='completed' or visit_status=='cancelled'"/>
-                            <field name="patient_id"/>
+                            <field name="patient_id" options="{'no_open': True, 'no_create': True}"/>
                             <field name="diagnos_qty"/>
                         </group>
-                        <field name="diagnos_ids"/>
+                    </group>
+                    <group string="Diagnoses">
+                        <field name="diagnos_ids" nolabel="1" colspan="2"/>
                     </group>
                  </sheet>
             </form>
