@@ -1,7 +1,7 @@
 from odoo import api, fields, models
 
 
-class Contact_Person(models.Model):
+class ContactPerson(models.Model):
     _name = 'hh.contact.person'
     _description = 'Contact persons'
     _inherit = 'hh.person.mixin'

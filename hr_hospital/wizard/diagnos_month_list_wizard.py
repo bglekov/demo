@@ -1,5 +1,5 @@
-from odoo import _, fields, models
 from datetime import date
+from odoo import _, fields, models
 from dateutil.relativedelta import relativedelta
 
 
@@ -38,7 +38,7 @@ class DiagnosesMonthListWizard(models.TransientModel):
             'name': 'Diagnoses',
             'type': 'ir.actions.act_window',
             'res_model': 'hh.diagnos',
-            'view_mode': 'tree,form', # tree,form to let open form
+            'view_mode': 'tree,form',  # tree,form to let open form
             # 'target': 'current',
             'context': self.env.context,
             'domain': [('id', 'in', found_diagnos.ids)]
