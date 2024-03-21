@@ -17,7 +17,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="speciality"/>
+                        <field name="name"/>
                     </group>
                 </sheet>
             </form>
