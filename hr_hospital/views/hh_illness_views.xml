@@ -12,7 +12,7 @@
     </record>
 
      <record id="hh_illness_form" model="ir.ui.view">
-        <field name="name">hh.illness.form()</field>
+        <field name="name">hh.illness.form</field>
         <field name="model">hh.illness</field>
         <field name="arch" type="xml">
             <form>
@@ -26,11 +26,24 @@
         </field>
     </record>
 
-     <record id="hh_illness_act_window" model="ir.actions.act_window">
-         <field name="name">Illness</field>
-         <field name="type">ir.actions.act_window</field>
-         <field name="res_model">hh.illness</field>
-         <field name="view_mode">tree,form</field>
+    <record id="hh_illness_search" model="ir.ui.view">
+        <field name="name">hh.illness.search</field>
+        <field name="model">hh.illness</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Put here searches or group_by -->
+                <searchpanel view_types="list">
+                    <field name="parent_id" select="one" groupby="parent_id" hierarchize="1" icon="fa-database"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="hh_illness_act_window" model="ir.actions.act_window">
+        <field name="name">Illness</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hh.illness</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="hh_illness_menu"
