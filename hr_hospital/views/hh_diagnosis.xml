@@ -35,11 +35,36 @@
         </field>
     </record>
 
+    <!--Pivot-->
+    <record id="hh_diagnos_pivot" model="ir.ui.view">
+        <field name="name">hh.diagnos.pivot</field>
+        <field name="model">hh.diagnos</field>
+        <field name="arch" type="xml">
+            <pivot display_quantity="0">
+                <field name="illness_id" type="row"/>
+                <field name="create_date" interval="year" type="col"/>
+                <field name="create_date" interval="month" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hh_diagnos_graph" model="ir.ui.view">
+        <field name="name">hh.diagnos.graph</field>
+        <field name="model">hh.diagnos</field>
+        <field name="arch" type="xml">
+            <graph type="bar" stacked="1" order="asc" disable_linking="0" sample="0">
+                <!--<field name="create_date" interval="month"/>-->
+                <field name="illness_id"/>
+                <field name="visit_plan_date"/>
+            </graph>
+        </field>
+    </record>
+
     <record id="hh_diagnos_act_window" model="ir.actions.act_window">
          <field name="name">Diagnos</field>
          <field name="type">ir.actions.act_window</field>
          <field name="res_model">hh.diagnos</field>
-         <field name="view_mode">tree,form</field>
+         <field name="view_mode">tree,form,pivot,graph</field>
     </record>
 
     <menuitem id="hh_diagnos_menu"
