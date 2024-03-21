@@ -77,15 +77,12 @@
         </field>
     </record>
 
-    <!--Search-->
+    <!--Search_Set_GroupBy-->
     <record id="hh_patient_visit_search" model="ir.ui.view">
         <field name="name">hh.patient.visit.search</field>
         <field name="model">hh.patient.visit</field>
         <field name="arch" type="xml">
             <search>
-                <field name="doctor_id"/>
-                <field name="patient_id"/>
-                <field name="diagnos_qty"/>
                 <filter name="groupby_visit_status" string="Status" context="{'group_by': 'visit_status'}"/>
                 <filter name="groupby_doctor_id" string="Doctor" context="{'group_by': 'doctor_id'}"/>
                 <filter name="groupby_patient_id" string="Patient" context="{'group_by': 'patient_id'}"/>

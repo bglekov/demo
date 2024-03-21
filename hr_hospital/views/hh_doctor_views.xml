@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <!-- TREE -->
     <record id="hh_doctor_tree" model="ir.ui.view">
         <field name="name">hh.doctor.tree()</field>
         <field name="model">hh.doctor</field>
         <field name="arch" type="xml">
             <tree expand="1">
-<!--            Атрибут expand визначає чи будуть групи розгорнуті при групуванні. За замовчанням згорнуті. -->
+                <!--            Атрибут expand визначає чи будуть групи розгорнуті при групуванні. За замовчанням згорнуті. -->
                 <field name="name" decoration-bf="is_intern==True" decoration-danger="is_intern==True"/>
-<!--                    decoration-bf="is_intern==True"         BOLD-->
-<!--                    decoration-muted="is_intern==True"      GREY-->
-<!--                    decoration-info="is_intern==True"       BLUE-->
-<!--                    decoration-danger="is_intern==True"     RED-->
-<!--                    decoration-warning="is_intern==True"    YELLOW-->
-<!--                    decoration-success="is_intern==True"    GREEN-->
+                <!--                    decoration-bf="is_intern==True"         BOLD-->
+                <!--                    decoration-muted="is_intern==True"      GREY-->
+                <!--                    decoration-info="is_intern==True"       BLUE-->
+                <!--                    decoration-danger="is_intern==True"     RED-->
+                <!--                    decoration-warning="is_intern==True"    YELLOW-->
+                <!--                    decoration-success="is_intern==True"    GREEN-->
                 <field name="speciality"/>
                 <field name="is_intern"/>
                 <field name="doctor_mentor" readonly="is_intern=='True'"/>
@@ -20,24 +22,29 @@
         </field>
     </record>
 
-     <record id="hh_doctor_form" model="ir.ui.view">
-        <field name="name">hh.doctor.form()</field>
+    <!-- FORM -->
+    <record id="hh_doctor_form" model="ir.ui.view">
+        <field name="name">hh.doctor.form</field>
         <field name="model">hh.doctor</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
-<!--                    <widget name="web_ribbon" title="Intern" bg_color="bg-info" invisible="is_intern==False"/>-->
+                    <!-- Ribbon Widgets -->
+                    <!-- <widget name="web_ribbon" title="Intern" bg_color="bg-info" invisible="is_intern==False"/>-->
                     <widget name="web_ribbon" title="Intern" bg_color="bg-danger" invisible="is_intern==False"/>
+
+                    <!-- Image on the right top corner -->
+                    <field name="photo" widget="image" nolabel="1" class="oe_avatar"
+                           options='{"preview_image": "photo"}'/>
+
+                    <!-- Title Block -->
                     <div class="oe_title">
-                        <h1><field name="name" placeholder="Name"/></h1>
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+                        </h1>
                     </div>
 
                     <group>
-                        <group>
-                            <field name="speciality"/>
-                            <field name="is_intern"/>
-                            <field name="doctor_mentor" readonly="is_intern=='True'"/>
-                        </group>
                         <group>
                             <field name="first_name"/>
                             <field name="last_name"/>
@@ -46,19 +53,119 @@
                             <field name="sex"/>
                         </group>
                         <group>
-                            <field name="photo" widget="image"/>
+                            <field name="speciality"/>
+                            <field name="is_intern"/>
+                            <field name="doctor_mentor" invisible="is_intern==False"/>
+
+                        </group>
+                        <group>
+
                         </group>
                     </group>
+
+                    <!-- Notebook: use it to separate a different field groups -->
+                    <notebook>
+                        <page string="Interns" name="intern_ids">
+                            <!-- Kanban Block -->
+                            <field name="intern_ids" mode="kanban">
+                                <kanban>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click">
+                                                <!-- Image -->
+                                                <div class="o_kanban_image">
+                                                    <img alt="Dr. Image"
+                                                         t-att-src="kanban_image('hh.doctor', 'photo', record.id.raw_value)"/>
+                                                </div>
+                                                <!-- Main Block -->
+                                                <div class="oe_kanban_details">
+                                                    <strong class="o_kanban_record_title">
+                                                        <span>
+                                                            <field name="name"/>
+                                                        </span>
+                                                    </strong>
+                                                </div>
+                                                <!-- Bottom -->
+                                                <div class="oe_kanban_bottom">
+                                                    <div>Specialty:
+                                                        <field name="speciality"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                        <page string="Technical" name="technical" groups="base.group_no_one">
+                            <group>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+                            </group>
+                        </page>
+                    </notebook>
+
                 </sheet>
             </form>
         </field>
     </record>
 
-     <record id="hh_doctor_act_window" model="ir.actions.act_window">
-         <field name="name">Doctor</field>
-         <field name="type">ir.actions.act_window</field>
-         <field name="res_model">hh.doctor</field>
-         <field name="view_mode">tree,form</field>
+    <!-- KANBAN -->
+    <record id="hh_doctor_kanban" model="ir.ui.view">
+        <field name="name">hh.doctor.kanban</field>
+        <field name="model">hh.doctor</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile"
+                    default_group_by="speciality"
+                    default_order="name DESC"
+                    records_draggable="true">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div>
+                                <!-- Image -->
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('hh.doctor', 'photo', record.id.raw_value)"/>
+                                </div>
+                                <!-- Main Block -->
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <span>
+                                            <field name="name"/>
+                                        </span>
+                                    </strong>
+                                    <div class="o_kanban_record_subtitle">
+                                        <field name="sex"/>
+                                    </div>
+                                    <div>Phone:
+                                        <field name="phone"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--Search-->
+    <record id="hh_doctor_search" model="ir.ui.view">
+        <field name="name">hh.doctor.search</field>
+        <field name="model">hh.doctor</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="interns_only" string="Interns only" domain="[('is_intern', '=', True)]"/>
+                <filter name="mentors_only" string="Mentors only" domain="[('is_intern', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="hh_doctor_act_window" model="ir.actions.act_window">
+        <field name="name">Doctor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hh.doctor</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
 
