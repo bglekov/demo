@@ -26,3 +26,5 @@ class Diagnos(models.Model):
         related='visit_id.patient_id',
         readonly=True
     )
+
+    visit_plan_date = fields.Datetime(related='visit_id.planned_date_time', store=True)
