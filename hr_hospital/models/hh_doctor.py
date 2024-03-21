@@ -19,6 +19,12 @@ class Doctor(models.Model):
         domain="[('is_intern', '=', False),('id', '!=', id),]",
     )
 
+    intern_ids = fields.One2many(
+        comodel_name='hh.doctor',
+        inverse_name='doctor_mentor',
+        string='Interns'
+    )
+
     @api.onchange('is_intern', 'doctor_mentor')
     def _onchange_is_intern(self):
         if not self.is_intern:
